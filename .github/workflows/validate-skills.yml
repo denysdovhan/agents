@@ -1,12 +1,22 @@
 name: Validate Skills
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "**/SKILL.md"
   pull_request:
+    branches: [main]
+    paths:
+      - "**/SKILL.md"
+
+concurrency:
+  group: validate-skill-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-slim
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
