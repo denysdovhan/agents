@@ -12,8 +12,13 @@ echo "========================================================"
 echo "Reference: https://github.com/agentskills/agentskills"
 echo ""
 
+# Remember repository root and use absolute paths to avoid cd/OLDPWD issues
+REPO_ROOT="$(pwd)"
+SKILLS_REF_VENV="$REPO_ROOT/$SKILLS_REF_DIR/.venv"
+SKILLS_REF_BIN="$SKILLS_REF_VENV/bin/skills-ref"
+
 # Check if skills-ref is already installed
-if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
+if [ ! -d "$SKILLS_REF_VENV" ]; then
     echo "📦 Installing skills-ref library..."
     echo ""
 
@@ -22,6 +27,7 @@ if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
     fi
 
     cd "$SKILLS_REF_DIR" || exit
+    cd skills-ref || exit
 
     if command -v uv &> /dev/null; then
         echo "Using uv to install..."
@@ -33,14 +39,15 @@ if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
         pip install -e .
     fi
     echo ""
+
+    cd "$REPO_ROOT" || exit
 fi
 
-# Activate the virtual environment
-cd "$SKILLS_REF_DIR" || exit
-source .venv/bin/activate
-
-# Return to the original directory
-cd "$OLDPWD" || exit
+# Validate each skill with the installed binary directly
+if [ ! -x "$SKILLS_REF_BIN" ]; then
+    echo "❌ skills-ref executable not found at $SKILLS_REF_BIN"
+    exit 1
+fi
 
 # Track results
 PASSED=0
@@ -55,7 +62,7 @@ for skill_dir in "$SKILLS_DIR"/*/; do
     skill_name=$(basename "$skill_dir")
     printf "  %-30s" "$skill_name"
 
-    output=$(skills-ref validate "$skill_dir" 2>&1)
+    output=$("$SKILLS_REF_BIN" validate "$skill_dir" 2>&1)
     if echo "$output" | grep -q "Valid skill"; then
         echo "✓"
         ((PASSED+=1))
