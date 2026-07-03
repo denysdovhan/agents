@@ -5,12 +5,13 @@ This repository stores custom AI-agent skills made for
 workflows, project preferences, and domain-specific guidance that Denys wants
 available across local agent sessions.
 
-## Included Skills
+## Installation
 
-| Skill | Install | Description |
-|---|---|---|
-| [`commit`](skills/commit/SKILL.md) | `npx skills add denysdovhan/agents --skill commit` | Prepare focused git commits with scoped staging and clear commit messages. |
-| [`home-assistant-integration`](skills/home-assistant-integration/SKILL.md) | `npx skills add denysdovhan/agents --skill home-assistant-integration` | Create, scaffold, review, and maintain Python Home Assistant custom integrations using current developer docs and quality rules. |
+```bash
+npx skills add denysdovhan/agents
+```
+
+After running this command, select the required skill in the CLI prompt.
 
 ## Included Skills
 
