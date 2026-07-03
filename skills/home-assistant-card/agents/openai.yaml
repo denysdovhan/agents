@@ -1,0 +1,7 @@
+interface:
+  display_name: "Home Assistant Card"
+  short_description: "Build and maintain HA custom cards"
+  icon_small: "./assets/home-assistant.png"
+  icon_large: "./assets/home-assistant.png"
+  brand_color: "#18BCF2"
+  default_prompt: "Use $home-assistant-card to create, review, or maintain a Home Assistant custom card."
