@@ -2,6 +2,13 @@
 
 This repository stores custom-made skills for AI agents.
 
+## Included Skills
+
+| Skill | Description |
+|---|---|
+| [`commit`](skills/commit/SKILL.md) | Prepare focused git commits with scoped staging and clear commit messages. |
+| [`home-assistant-integration`](skills/home-assistant-integration/SKILL.md) | Create, scaffold, review, and maintain Python Home Assistant custom integrations using current developer docs and quality rules. |
+
 ## Local Validation
 
 Run the repository validation script:
