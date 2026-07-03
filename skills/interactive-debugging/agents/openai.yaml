@@ -1,0 +1,7 @@
+interface:
+  display_name: "Interactive Debugging"
+  short_description: "Capture live runtime traces with probes"
+  icon_small: "./assets/debug.png"
+  icon_large: "./assets/debug.png"
+  brand_color: "#EF233C"
+  default_prompt: "Use $interactive-debugging to trace a runtime issue with temporary HTTP probes."
