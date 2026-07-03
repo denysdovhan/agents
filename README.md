@@ -18,6 +18,7 @@ After running this command, select the required skill in the CLI prompt.
 | Skill | Description |
 |---|---|
 | <img src="skills/commit/assets/git.png" alt="Git icon" width="16" height="16"> [`commit`](skills/commit/SKILL.md) | Prepare focused git commits with scoped staging and clear commit messages. |
+| <img src="skills/home-assistant-card/assets/home-assistant.png" alt="Home Assistant icon" width="16" height="16"> [`home-assistant-card`](skills/home-assistant-card/SKILL.md) | Create, review, debug, and maintain Home Assistant custom Lovelace cards and card editors. |
 | <img src="skills/home-assistant-integration/assets/home-assistant.png" alt="Home Assistant icon" width="16" height="16"> [`home-assistant-integration`](skills/home-assistant-integration/SKILL.md) | Create, scaffold, review, and maintain Python Home Assistant custom integrations using current developer docs and quality rules. |
 
 ## Local Validation
