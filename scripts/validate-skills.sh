@@ -27,7 +27,6 @@ if [ ! -d "$SKILLS_REF_VENV" ]; then
     fi
 
     cd "$SKILLS_REF_DIR" || exit
-    cd skills-ref || exit
 
     if command -v uv &> /dev/null; then
         echo "Using uv to install..."
