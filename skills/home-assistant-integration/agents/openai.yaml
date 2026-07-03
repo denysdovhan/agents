@@ -1,7 +1,7 @@
 interface:
   display_name: "Home Assistant Integration"
   short_description: "Build and maintain HA integrations"
-  icon_small: "./assets/home-assistant.png"
-  icon_large: "./assets/home-assistant.png"
-  brand_color: "#41BDF5"
+  icon_small: "./assets/home-assistant.svg"
+  icon_large: "./assets/home-assistant.svg"
+  brand_color: "#18BCF2"
   default_prompt: "Use $home-assistant-integration to create, review, or maintain a Home Assistant custom integration."
