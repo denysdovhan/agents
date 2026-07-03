@@ -1,0 +1,7 @@
+interface:
+  display_name: "Commit"
+  short_description: "Create clean, focused git commits"
+  icon_small: "./assets/git.svg"
+  icon_large: "./assets/git.svg"
+  brand_color: "#F05032"
+  default_prompt: "Use $commit to stage focused changes and create a clean git commit."
