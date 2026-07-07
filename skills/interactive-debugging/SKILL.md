@@ -1,11 +1,11 @@
 ---
 name: interactive-debugging
-description: Use this skill when debugging runtime behavior requires live data from the running app, temporary instrumentation, or hypothesis verification through logs. Trigger for async timeouts, stale or incorrect state updates, race conditions, event ordering bugs, intermittent failures, browser/client behavior that static inspection cannot explain, or any issue where Codex should create a local debug HTTP server, insert temporary probes, ask the user to reproduce, inspect .debug/debug.log, then remove all debug instrumentation and assets.
+description: Use this skill when debugging runtime behavior requires live data from the running app, temporary instrumentation, or hypothesis verification through logs. Trigger for async timeouts, stale or incorrect state updates, race conditions, event ordering bugs, intermittent failures, browser/client behavior that static inspection cannot explain, or any issue where the agent should create a local debug HTTP server, insert temporary probes, ask the user to reproduce, inspect .debug/debug.log, then remove all debug instrumentation and assets.
 ---
 
 # Interactive Debugging
 
-Use this skill to run a Cursor Debug Mode-style loop: hypothesize, instrument, reproduce, inspect runtime logs, fix, verify, and clean up.
+Use this skill to run a debug loop: hypothesize, instrument, reproduce, inspect runtime logs, fix, verify, and clean up.
 
 ## Required Paths
 
@@ -13,7 +13,7 @@ Use this skill to run a Cursor Debug Mode-style loop: hypothesize, instrument, r
 - Debug log: `.debug/debug.log`
 - Default endpoint: `http://localhost:3333/debug`
 
-The bundled servers in `scripts/debug_server.js` and `scripts/debug_server.py` are intentionally thin. They accept `POST /debug`, append the raw request body to `.debug/debug.log` with a timestamp, and return `ok`.
+The bundled servers in this skill's `scripts/` directory (next to this SKILL.md, not in the project being debugged) are intentionally thin. They accept `POST /debug`, append the raw request body to `.debug/debug.log` with a timestamp, and return `ok`.
 
 ## Steps
 
@@ -26,7 +26,7 @@ The bundled servers in `scripts/debug_server.js` and `scripts/debug_server.py` a
 ### Step 2: Create the Debug Server
 
 - Create `.debug/` in the project under debug.
-- Copy the matching bundled server to `.debug/debug_server.js` or `.debug/debug_server.py`.
+- Copy the matching bundled server from this skill's `scripts/` directory to `.debug/debug_server.js` or `.debug/debug_server.py` in the project.
 - For another language, create the smallest equivalent server at `.debug/debug_server.<ext>`.
 - Keep the server thin: no schemas, dashboards, persistence, extra routes, or broad utilities.
 
@@ -39,6 +39,7 @@ node .debug/debug_server.js 3333
 python3 .debug/debug_server.py 3333
 ```
 
+- The server is a long-running foreground process; start it in the background (or another terminal) so it does not block your shell.
 - Use another port only if `3333` is occupied.
 - Verify it with `curl http://localhost:3333/health`.
 - Clear `.debug/debug.log` before reproduction if it already exists.
@@ -46,7 +47,7 @@ python3 .debug/debug_server.py 3333
 ### Step 4: Instrument the Code
 
 - Add the fewest probes needed to test the hypotheses.
-- Wrap every probe or probe block in matching Cursor-style debug regions:
+- Wrap every probe or probe block in matching debug region markers:
 
 ```js
 // #region DEBUG
@@ -99,7 +100,7 @@ fetch("http://localhost:3333/debug", {
 - Remove every `#region DEBUG` / `#endregion DEBUG` block and its contents.
 - Stop the debug server.
 - Delete `.debug/debug_server.*` and `.debug/debug.log`; delete `.debug/` if empty.
-- Verify cleanup with `rg '#region DEBUG|#endregion DEBUG|localhost:3333/debug|debug_server|\\.debug/debug.log'`.
+- Verify cleanup with `rg '#region DEBUG|#endregion DEBUG|localhost:3333/debug|debug_server|\\.debug/debug.log'`, replacing `3333` with the port actually used.
 - Run the relevant test or reproduction check after cleanup.
 
 ## Log Reading Checklist
