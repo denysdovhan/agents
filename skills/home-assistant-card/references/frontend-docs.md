@@ -1,12 +1,6 @@
 # Frontend Docs Routing
 
-Use this file before changing Home Assistant custom card APIs, card editor behavior, dashboard resource registration, frontend data access, or external app integration behavior. All doc paths below are relative to the [Home Assistant developers docs base](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/) — prepend it when fetching:
-
-```text
-https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/
-```
-
-Fetch current markdown before coding.
+Use this file before changing Home Assistant custom card APIs, card editor behavior, dashboard resource registration, frontend data access, or external app integration behavior. Doc paths below are relative to the docs base URL defined in `SKILL.md` (`https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/`) — prepend it and fetch the current markdown before coding.
 
 ## Source Map
 

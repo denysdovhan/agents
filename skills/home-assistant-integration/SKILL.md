@@ -9,7 +9,7 @@ Use this skill for Home Assistant custom integration development. This is separa
 
 ## Start With Current Docs
 
-Fetch the latest markdown from the Home Assistant developers docs repository before coding. Prefer raw files from:
+Fetch the latest markdown from the Home Assistant developers docs repository before coding. All doc paths in this skill and its references are relative to this base URL — prepend it when fetching:
 
 ```text
 https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/
@@ -17,19 +17,7 @@ https://raw.githubusercontent.com/home-assistant/developers.home-assistant/maste
 
 Use rendered pages on `developers.home-assistant.io` only as secondary reading. Do not copy Home Assistant docs into generated skill or repo files. Fetch only the files relevant to the task.
 
-Core source files:
-
-| Task | Markdown files |
-|---|---|
-| Architecture | [`architecture/core.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/architecture/core.md), [`architecture_components.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/architecture_components.md) |
-| File layout and manifest | [`creating_integration_file_structure.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/creating_integration_file_structure.md), [`creating_integration_manifest.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/creating_integration_manifest.md) |
-| Config lifecycle | [`core/integration/config_flow.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/integration/config_flow.md), [`core/integration/options_flow.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/integration/options_flow.md), [`config_entries_index.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/config_entries_index.md), [`integration_setup_failures.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/integration_setup_failures.md) |
-| Runtime behavior | [`integration_fetching_data.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/integration_fetching_data.md), [`integration_events.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/integration_events.md), [`integration_listen_events.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/integration_listen_events.md), [`network_discovery.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/network_discovery.md), [`dev_101_hass.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/dev_101_hass.md), [`core/entity.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/entity.md) |
-| Diagnostics, auth, branding | [`core/integration/diagnostics.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/integration/diagnostics.md), [`auth_index.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/auth_index.md), [`core/integration/brand_images.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/integration/brand_images.md) |
-| Review gates | [`creating_component_code_review.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/creating_component_code_review.md), [`creating_platform_code_review.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/creating_platform_code_review.md), [`core/integration-quality-scale/rules.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/integration-quality-scale/rules.md), [`core/integration-quality-scale/checklist.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/core/integration-quality-scale/checklist.md) |
-| Quality rules | [`core/integration-quality-scale/rules/<rule>.md`](https://github.com/home-assistant/developers.home-assistant/tree/master/docs/core/integration-quality-scale/rules) for each rule that applies |
-
-Use the reference files in this skill as routing indexes, then fetch the current markdown files they point to. Always consult the relevant reference before editing matching files:
+The reference files in this skill are the routing indexes to the doc paths; do not rely on remembered Home Assistant APIs. Always consult the relevant reference, then fetch the current markdown files it points to, before editing matching files:
 
 | Reference | Use when |
 |---|---|
@@ -68,7 +56,7 @@ Add files such as `config_flow.py`, platform modules, `coordinator.py`, `entity.
 
 Default to Bronze. Higher levels are cumulative and should only be added when the user asks or explicitly accepts the extra scope. Bronze means all Bronze rules apply; Silver includes Bronze; Gold includes Silver and Bronze; Platinum includes all lower levels.
 
-Before finishing ordinary integration work, read `references/quality-rules.md`, fetch the latest markdown for each relevant rule, and run the Bronze checklist against the current code. If the user asks for Silver, Gold, or Platinum, make the additional rule set part of the implementation scope before coding.
+Before finishing ordinary integration work, read `references/quality-rules.md`, confirm the current rule list from `core/integration-quality-scale/_includes/tiers.json`, fetch the latest markdown for each relevant rule, and verify every Bronze rule against the current code. If the user asks for Silver, Gold, or Platinum, make the additional rule set part of the implementation scope before coding.
 
 ## Review Checklist
 
