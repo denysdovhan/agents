@@ -1,16 +1,22 @@
 # Frontend Docs Routing
 
-Use this file before changing Home Assistant custom card APIs, card editor behavior, dashboard resource registration, frontend data access, or external app integration behavior. Fetch current markdown before coding.
+Use this file before changing Home Assistant custom card APIs, card editor behavior, dashboard resource registration, frontend data access, or external app integration behavior. All doc paths below are relative to the [Home Assistant developers docs base](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/) — prepend it when fetching:
+
+```text
+https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/
+```
+
+Fetch current markdown before coding.
 
 ## Source Map
 
-| Task | Current markdown |
+| Task | Doc path |
 |---|---|
-| Custom card API, card editors, picker registration, suggestions, form editors, sizing | [`frontend/custom-ui/custom-card.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/custom-ui/custom-card.md) |
-| Home Assistant frontend data, methods, entity state access, formatting, localization | [`frontend/data.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/data.md) |
-| Dashboard resource registration and cache/version expectations | [`frontend/custom-ui/registering-resources.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/custom-ui/registering-resources.md) |
-| External authentication from a companion app or external page | [`frontend/external-authentication.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/external-authentication.md) |
-| External bus messaging with Home Assistant frontend | [`frontend/external-bus.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/external-bus.md) |
+| Custom card API, card editors, picker registration, suggestions, form editors, sizing | `frontend/custom-ui/custom-card.md` |
+| Home Assistant frontend data, methods, entity state access, formatting, localization | `frontend/data.md` |
+| Dashboard resource registration and cache/version expectations | `frontend/custom-ui/registering-resources.md` |
+| External authentication from a companion app or external page | `frontend/external-authentication.md` |
+| External bus messaging with Home Assistant frontend | `frontend/external-bus.md` |
 
 ## Read Rules
 

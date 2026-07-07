@@ -2,10 +2,10 @@
 
 Use these compact examples when creating a card, adding a visual editor, or reviewing card picker behavior. They are adapted from Home Assistant's custom card and frontend data docs; fetch the current docs before implementing.
 
-Sources:
+Sources (paths relative to the docs base URL in `frontend-docs.md`):
 
-- [`frontend/custom-ui/custom-card.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/custom-ui/custom-card.md)
-- [`frontend/data.md`](https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/frontend/data.md)
+- `frontend/custom-ui/custom-card.md`
+- `frontend/data.md`
 
 ## Minimal Card Shape
 

@@ -11,7 +11,7 @@ This is separate from Python integrations, automations, scripts, helpers, and or
 
 ## Start With Current Docs
 
-Fetch current markdown from the Home Assistant developers docs repository before changing card APIs. Prefer raw files from:
+Fetch current markdown from the Home Assistant developers docs repository before changing card APIs. All doc paths in this skill's references are relative to this base URL — prepend it when fetching:
 
 ```text
 https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/
