@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design Log"
+  short_description: "Maintain a decision journal in .agents/log"
+  icon_small: "./assets/design-log.png"
+  icon_large: "./assets/design-log.png"
+  brand_color: "#6366F1"
+  default_prompt: "Use $design-log to record or recall design decisions in .agents/log."
