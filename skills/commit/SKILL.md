@@ -54,6 +54,8 @@ Use the dominant style from relevant recent history:
 
 ## Guidelines
 
+- Respect what the user already staged: inspect `git diff --cached` before staging anything, treat pre-staged content as intentional, and do not unstage it unless it clearly does not belong to the requested change — call that out instead.
+- If a pre-commit hook fails, fix the reported problem and retry the commit.  If a hook rewrites files, restage only the hook-modified files and commit again. Do not bypass hooks with `--no-verify` unless the user explicitly asks.
 - Do not stage unrelated files just to make the tree clean.
 - Prefer one focused commit over a mixed commit.
 - Use imperative subjects unless the repository's explicit rules or dominant
