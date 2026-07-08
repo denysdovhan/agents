@@ -63,6 +63,45 @@ fetch("http://localhost:3333/debug", {
 // #endregion DEBUG
 ```
 
+Dependency-free examples for other languages:
+
+```python
+# #region DEBUG
+import json
+import urllib.request
+
+try:
+    urllib.request.urlopen(
+        urllib.request.Request(
+            "http://localhost:3333/debug",
+            data=json.dumps({"event": "function-entry", "value": value}).encode(),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        ),
+        timeout=0.2,
+    ).close()
+except Exception:
+    pass
+# #endregion DEBUG
+```
+
+```ruby
+# #region DEBUG
+require "json"
+require "net/http"
+require "uri"
+
+begin
+  Net::HTTP.post(
+    URI("http://localhost:3333/debug"),
+    { event: "function-entry", value: value }.to_json,
+    "Content-Type" => "application/json",
+  )
+rescue StandardError
+end
+# #endregion DEBUG
+```
+
 - Use the target language's matching comments:
   - JavaScript, TypeScript, Java, C#, Go, Rust, C, C++: `// #region DEBUG` and `// #endregion DEBUG`
   - Python, Ruby, Shell, YAML: `# #region DEBUG` and `# #endregion DEBUG`
