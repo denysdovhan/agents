@@ -75,12 +75,12 @@ Omit sections that have no content. Keep entries short and decision-focused — 
 `index.md` holds a single markdown table:
 
 ```markdown
-| Entry | Date | Status | Description | Related paths |
-|---|---|---|---|---|
-| [Dark mode toggle](2026-07-07-dark-mode-toggle.md) | 2026-07-07 | done | Theme switching via CSS variables | `src/theme/` |
+| Date | Name | Status |
+|---|---|---|
+| 2026-07-07 | [Dark mode toggle](2026-07-07-dark-mode-toggle.md) | done |
 ```
 
-Keep entries sorted newest first. Update the index whenever an entry is created, renamed, or its status changes.
+Use the linked name as the short description. Keep paths, tradeoffs, and other details in the entry itself. Keep entries sorted newest first. Update the index whenever an entry is created, renamed, or its status changes.
 
 ## Recall: Read Before You Write
 
