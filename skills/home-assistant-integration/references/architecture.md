@@ -35,6 +35,7 @@ For local file-level routing, read `core-integration-files.md` before editing in
 | Setup failures | `integration_setup_failures.md` |
 | Firing events | `integration_events.md` |
 | Listening for events | `integration_listen_events.md` |
+| Automation trigger classes | `automations.md` |
 | Networking and discovery | `network_discovery.md` |
 | Diagnostics | `core/integration/diagnostics.md` |
 | System health | `core/integration/system_health.md` |

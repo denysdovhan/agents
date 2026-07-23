@@ -15,6 +15,7 @@ Use this file before editing integration-level files. Doc paths below are relati
 | Platform modules | `entities-and-domains.md`, `core/entity.md`, `creating_platform_code_review.md` |
 | `diagnostics.py` | `core/integration/diagnostics.md`, rule `diagnostics` |
 | `repairs.py` | rule `repair-issues`, `translations.md` |
+| `trigger.py`, `triggers.yaml` | `automation-triggers.md`, `automations.md`, `integration_events.md` |
 | `services.yaml` and service/action handlers | `dev_101_services.md`, rules `action-setup`, `action-exceptions`, `docs-actions` |
 | `strings.json`, `translations/*.json` | `translations.md`, `internationalization.md`, rules `entity-translations`, `exception-translations`, `icon-translations` |
 | API/client modules | `integration_fetching_data.md`, `asyncio_working_with_async.md`, `asyncio_blocking_operations.md`, `auth_index.md` |

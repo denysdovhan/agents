@@ -1,6 +1,6 @@
 ---
 name: home-assistant-integration
-description: Use this skill when creating, scaffolding, reviewing, or maintaining Python Home Assistant custom integrations, including work on custom_components, manifests, config flows, options flows, config entries, platforms/entities, DataUpdateCoordinator, diagnostics, repairs, discovery/networking, authentication, HACS-ready repositories, or Home Assistant integration quality scale compliance.
+description: Use this skill when creating, scaffolding, reviewing, or maintaining Python Home Assistant custom integrations, including work on custom_components, manifests, config flows, options flows, config entries, platforms/entities, DataUpdateCoordinator, integration automation triggers, diagnostics, repairs, discovery/networking, authentication, HACS-ready repositories, or Home Assistant integration quality scale compliance.
 ---
 
 # Home Assistant Integration Skill
@@ -21,10 +21,11 @@ The reference files in this skill are the routing indexes to the doc paths; do n
 
 | Reference | Use when |
 |---|---|
-| `references/architecture.md` | Editing generic integration architecture, lifecycle, setup, manifest, config entries, data fetching, events, diagnostics, auth, networking, docs, tests, or translations |
-| `references/core-integration-files.md` | Editing core integration files such as `__init__.py`, `manifest.json`, `config_flow.py`, `coordinator.py`, `diagnostics.py`, `repairs.py`, services, translations, tests, or docs |
-| `references/entities-and-domains.md` | Editing platform/entity files such as `sensor.py`, `binary_sensor.py`, `calendar.py`, `weather.py`, or deciding which platform domain fits a feature |
-| `references/quality-rules.md` | Checking Bronze/Silver/Gold/Platinum quality scale rules or reviewing an integration against Home Assistant quality requirements |
+| [`references/architecture.md`](references/architecture.md) | Editing generic integration architecture, lifecycle, setup, manifest, config entries, data fetching, events, diagnostics, auth, networking, docs, tests, or translations |
+| [`references/core-integration-files.md`](references/core-integration-files.md) | Editing core integration files such as `__init__.py`, `manifest.json`, `config_flow.py`, `coordinator.py`, `diagnostics.py`, `repairs.py`, services, translations, tests, or docs |
+| [`references/entities-and-domains.md`](references/entities-and-domains.md) | Editing platform/entity files such as `sensor.py`, `binary_sensor.py`, `calendar.py`, `weather.py`, or deciding which platform domain fits a feature |
+| [`references/automation-triggers.md`](references/automation-triggers.md) | Adding or maintaining new integration-provided automation triggers in `trigger.py` and `triggers.yaml` |
+| [`references/quality-rules.md`](references/quality-rules.md) | Checking Bronze/Silver/Gold/Platinum quality scale rules or reviewing an integration against Home Assistant quality requirements |
 
 ## Local Workflow
 
