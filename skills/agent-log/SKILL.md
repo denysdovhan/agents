@@ -1,18 +1,18 @@
 ---
-name: design-log
-description: Use this skill to maintain a design log in .agents/log, a decision journal shared by the developer and agents. Trigger when the user explicitly asks to use design-log or record/update a design log entry; when planning, implementing, or finalizing a significant feature in a repo with an existing .agents/log; or before non-trivial changes or questions in areas covered by existing entries. Never initialize .agents/log unless the user explicitly asks for a design log.
+name: agent-log
+description: Use this skill to maintain an agent log in .agents/log, a decision journal shared by the developer and agents. Trigger when the user explicitly asks to use agent-log or record/update an agent log entry; when planning, implementing, or finalizing a significant feature in a repo with an existing .agents/log; or before non-trivial changes or questions in areas covered by existing entries. Never initialize .agents/log unless the user explicitly asks for an agent log.
 ---
 
-# Design Log
+# Agent Log
 
-Maintain `.agents/log/` — a version-controlled journal of product and engineering decisions, tradeoffs, and directions, co-owned by the developer and agents. Entries capture *why* — the reasoning that code and git history cannot recover. Inspired by the [design-log methodology](https://github.com/yoavaa/design-log-methodology).
+Maintain `.agents/log/` — a version-controlled journal of product and engineering decisions, tradeoffs, and directions, co-owned by the developer and agents. Entries capture *why* — the reasoning that code and git history cannot recover.
 
 ## Layout
 
 - `.agents/log/index.md` — index of all entries
 - `.agents/log/YYYY-MM-DD-slug.md` — one entry per feature or decision
 
-Initialize `.agents/log/` only when the user explicitly asks — by invoking this skill or directly requesting a design log. If `.agents/log/` is absent otherwise, do not create it, even when a plan is approved. When initializing, create `.agents/log/index.md` with the table header from Index Format; create an entry only if the current task records a decision.
+Initialize `.agents/log/` only when the user explicitly asks — by invoking this skill or directly requesting an agent log. If `.agents/log/` is absent otherwise, do not create it, even when a plan is approved. When initializing, create `.agents/log/index.md` with the table header from Index Format; create an entry only if the current task records a decision.
 
 ## Entry Format
 
@@ -116,7 +116,7 @@ Before drafting a plan or entry for a significant feature or architectural chang
 
 ### 2. Draft when a plan is approved
 
-When the user approves a plan for a significant feature or architectural change, create a draft entry as the first implementation step — but only if `.agents/log/` already exists or the user explicitly asked for a design log. Otherwise skip the entry; plan approval alone never initializes the log.
+When the user approves a plan for a significant feature or architectural change, create a draft entry as the first implementation step — but only if `.agents/log/` already exists or the user explicitly asked for an agent log. Otherwise skip the entry; plan approval alone never initializes the log.
 
 - Name it `YYYY-MM-DD-slug.md` using today's date.
 - Set `status: wip` and fill `related_paths` with the folders and files the plan touches.

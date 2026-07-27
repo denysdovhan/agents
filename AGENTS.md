@@ -53,7 +53,7 @@ assets, run `./scripts/validate-skills.sh` and `git diff --check`.
 ## Commit & Pull Request Guidelines
 
 Use conventional commits with a concise imperative subject, for example
-`feat: add design-log skill` or `docs: add skill icons to README`. Keep commits
+`feat: add agent-log skill` or `docs: add skill icons to README`. Keep commits
 focused by skill or concern.
 
 Pull requests should summarize what skill changed, why it changed, and which

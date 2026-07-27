@@ -1,0 +1,7 @@
+interface:
+  display_name: "Agent Log"
+  short_description: "Maintain an agent journal in .agents/log"
+  icon_small: "./assets/agent-log.png"
+  icon_large: "./assets/agent-log.png"
+  brand_color: "#6366F1"
+  default_prompt: "Use $agent-log to record or recall agent decisions in .agents/log."
