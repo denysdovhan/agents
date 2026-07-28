@@ -26,6 +26,8 @@ related_paths:
   - src/shared/specific-file.ts
 ---
 
+# Human-readable decision or feature title
+
 ## Background
 
 Context needed to understand the problem. Link related entries as
@@ -68,7 +70,10 @@ Dated notes appended during and after implementation: deviations from
 the plan, discoveries, test outcomes.
 ```
 
-Omit sections that have no content. Keep entries short and decision-focused — do not document what the code or git history already states.
+Make the level-one heading the first content after frontmatter and match its text
+exactly to the frontmatter `title`. Use only one level-one heading. Omit sections
+that have no content. Keep entries short and decision-focused — do not document
+what the code or git history already states.
 
 ## Index Format
 
