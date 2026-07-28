@@ -10,7 +10,7 @@ Maintain `.agents/log/` — a version-controlled journal of product and engineer
 ## Layout
 
 - `.agents/log/index.md` — index of all entries
-- `.agents/log/YYYY-MM-DD-slug.md` — one entry per feature or decision
+- `.agents/log/YYYY-MM-DD-slug.md` — one entry per feature or standalone decision
 
 Initialize `.agents/log/` only when the user explicitly asks — by invoking this skill or directly requesting an agent log. If `.agents/log/` is absent otherwise, do not create it, even when a plan is approved. When initializing, create `.agents/log/index.md` with the table header from Index Format; create an entry only if the current task records a decision.
 
@@ -89,8 +89,8 @@ Before drafting a plan or making non-trivial changes in a repo that has `.agents
 1. Read `index.md`.
 2. Read entries whose `related_paths` overlap the files or areas being touched. If the index seems stale, grep entry frontmatter directly. Also grep entry bodies for 2-3 keywords from the request — path overlap alone misses cross-cutting decisions.
 3. Surface relevant prior decisions to the user before asking clarifying questions — they may answer the questions or reshape the request.
-4. Treat `done` entries as binding constraints. Treat `wip` entries as current direction. When entries conflict, the newer one wins.
-5. If the requested change contradicts a `done` entry, surface the conflict to the user before proceeding. Resolution is a new entry recording the new decision and linking the old one, not a silent edit.
+4. Treat `done` entries as binding constraints unless the active conversation shows that the agent set the status without explicit user finalization; recover that lifecycle error under Done entries are frozen. Treat `wip` entries as current direction. When entries conflict, the newer one wins.
+5. If the requested change contradicts an explicitly finalized `done` entry, surface the conflict to the user before proceeding. Resolution is a new entry recording the new decision and linking the old one, not a silent edit.
 6. When answering questions about existing behavior or past decisions, cite the relevant entry by title and link.
 
 Read `index.md` and matching entries with the agent's normal file-reading tool. When the log is large, narrow down which entries to read first:
@@ -116,7 +116,11 @@ Before drafting a plan or entry for a significant feature or architectural chang
 
 ### 2. Draft when a plan is approved
 
-When the user approves a plan for a significant feature or architectural change, create a draft entry as the first implementation step — but only if `.agents/log/` already exists or the user explicitly asked for an agent log. Otherwise skip the entry; plan approval alone never initializes the log.
+When the user approves a plan for a significant feature or architectural change,
+continue an existing `wip` entry for that feature. Create a draft entry as the
+first implementation step only when no same-feature entry exists — and only if
+`.agents/log/` already exists or the user explicitly asked for an agent log.
+Otherwise skip the entry; plan approval alone never initializes the log.
 
 - Name it `YYYY-MM-DD-slug.md` using today's date.
 - Set `status: wip` and fill `related_paths` with the folders and files the plan touches.
@@ -127,19 +131,40 @@ When the user approves a plan for a significant feature or architectural change,
 
 While `status: wip`, the entry is a living document. Update it as decisions change, questions get answered, and the plan deviates. Keep `related_paths` in sync with where the work actually landed.
 
+- Treat the entry as belonging to the feature, not to one prompt, turn, review
+  round, or implementation pass.
+- Continue the same entry across follow-up prompts, diff comments, fixes, and
+  revised choices while the user is still working on the same feature.
+- Treat the same thread, overlapping paths, and one continuing uncommitted diff
+  as strong evidence of feature continuity. A thread may still contain multiple
+  features when the user clearly starts a separate one.
+
 ### 4. Finalize when the feature is done
 
-When the user says the feature is finished — or asks directly — finalize the entry:
+Finalize only when the user explicitly says the feature is finished or directly
+asks to finalize the entry.
+
+- Do not infer finalization from passing tests, completing implementation,
+  returning a final response, committing or merging code, or reaching the end
+  of a turn.
+- If the user appears to wrap up the feature without mentioning the log, ask
+  once whether to finalize it. Keep it `wip` while waiting for the answer.
 
 - Make sections reflect what was actually built; record final deviations and test outcomes in Implementation Notes.
 - Check off Verification items that passed. Do not mark an entry `done` while items are unchecked — either verify them, or record in Implementation Notes that the user explicitly waived them.
 - Set `status: done` and update `index.md`.
 
-If the user wraps up a feature without mentioning the log, ask once whether to finalize the entry.
-
 ### 5. Done entries are frozen
 
-Never edit a `done` entry. Follow-up work on the same area — including decisions that override it — gets a new entry that links back to the old one.
+A `done` entry is frozen only after explicit user finalization. Never edit an
+explicitly finalized entry. Later work that overrides it gets a new entry that
+links back to the old one.
+
+If an agent set `status: done` without explicit user confirmation and the
+feature is still active, treat that as a lifecycle error: restore the entry and
+index status to `wip`, then continue the same entry. Do not create a compensating
+entry. Preserve user-authored content while correcting the status and continuing
+the living document.
 
 ## Handling Feedback During Implementation
 
@@ -148,8 +173,8 @@ Never edit a `done` entry. Follow-up work on the same area — including decisio
 | Clarification question | Answer, citing entries; no log change |
 | Bug in the implementation | Fix it; note it in Implementation Notes |
 | Missed constraint or edge case | Append to Questions & Answers and Verification; adjust Decision if it changes |
-| Refinement of the current design | Update the `wip` entry |
-| Scope expansion or a separate decision | Create a new entry linking back; do not overload the current one |
+| Refinement, reversal, or diff comment for the current feature | Update the `wip` entry, even when it replaces an interim choice |
+| Clearly separate feature or standalone decision | Create a new entry linking related prior entries |
 
 When uncertain which type it is, state your assumptions and ask.
 
@@ -157,6 +182,6 @@ When uncertain which type it is, state your assumptions and ask.
 
 - Log significant features, architectural changes, and directional decisions. Skip trivial fixes, refactors with no decision content, and routine chores.
 - The developer edits entries too: never delete or rewrite user-authored content in an entry — append or ask.
-- One entry per feature or decision. If work spans multiple independent decisions, split it.
-- Prefer appending to an existing `wip` entry for follow-up prompts on the same feature; create a new entry when scope clearly grows into a separate decision. Ask when unclear.
+- Keep one entry per user-defined feature or standalone decision. Do not split a feature by prompt, review turn, implementation pass, or revised choice.
+- Continue the active `wip` entry for follow-up prompts on the same feature. Create a new entry only when the user clearly starts a separate feature or the work is an independent decision that can stand without the active feature. Ask when unclear.
 - Do not put secrets, credentials, or private user data in entries.
